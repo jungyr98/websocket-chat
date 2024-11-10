@@ -1,7 +1,8 @@
 package com.potato.chat;
 
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -30,10 +31,12 @@ public class WebSocketChatHandler extends TextWebSocketHandler {
 	
 	private final ObjectMapper objectMapper;
 	private final ChatService chatService;
+	private final Map<String, WebSocketSession> sessions = new HashMap<>();
 	
 	// 소켓 연결 확인	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		sessions.put(session.getId(), session);
 		log.info("new session : {} 연결됨", session.getId());
 	}
 	

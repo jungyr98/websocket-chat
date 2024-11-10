@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.potato.chat.vo.ChatRoomVO;
-import com.potato.chat.vo.ChatUserVO;
 
 public interface ChatService {
 	
@@ -28,13 +27,6 @@ public interface ChatService {
 	 * @return
 	 */
 	public ChatRoomVO createRoom(String roomName);
-	
-	/**
-	 * 유저 생성
-	 * @param newUserVO
-	 * @return
-	 */
-	public ChatUserVO createUser(ChatUserVO newUserVO);
 	
 	/**
 	 * 메세지 전송 함수

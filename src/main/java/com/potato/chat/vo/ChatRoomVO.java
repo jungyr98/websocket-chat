@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.web.socket.WebSocketSession;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.potato.chat.service.ChatService;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,6 +23,7 @@ public class ChatRoomVO {
 	private String roomName;
 	
 	@Schema(description = "현재 연결된 세션 그룹")
+	@JsonIgnore
 	private Set<WebSocketSession> sessions = new HashSet<>();
 	
 	@Builder
@@ -40,7 +42,7 @@ public class ChatRoomVO {
 		// messageType -> ENTER(입장)일 경우 분기 처리
 		if(chatMessageVO.getMessageType().equals(ChatMessageVO.MessageType.ENTER)) {
 			sessions.add(session);
-			chatMessageVO.setMessage(chatMessageVO.getSenderId() + "님이 입장했습니동.");
+			chatMessageVO.setMessage(chatMessageVO.getSenderId() + "님이 입장했습니다.");
 		}
 		sendMessage(chatMessageVO, chatService);
 	}

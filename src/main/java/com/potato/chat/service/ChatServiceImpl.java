@@ -13,7 +13,6 @@ import org.springframework.web.socket.WebSocketSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.potato.chat.vo.ChatRoomVO;
-import com.potato.chat.vo.ChatUserVO;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +25,6 @@ public class ChatServiceImpl implements ChatService {
 	
 	private final ObjectMapper objectMapper;
 	private Map<String, ChatRoomVO> chatRooms; // 서버에 생성된 모든 채팅방 정보 MAP
-	private Map<WebSocketSession, ChatUserVO> chatUsers; // 서버에 생성된 모든 유저 정보 MAP
 	
 	@PostConstruct
 	private void init() {
@@ -64,21 +62,6 @@ public class ChatServiceImpl implements ChatService {
 		chatRooms.put(randomId, chatRoomVO);
 		
 		return chatRoomVO;
-	}
-	
-	/**
-	 * 유저 생성
-	 */
-	public ChatUserVO createUser(ChatUserVO newUserVO) {
-		ChatUserVO chatUserVO = ChatUserVO.builder()
-				.session(newUserVO.getSession())
-				.userId(newUserVO.getUserId())
-				.build();
-		
-		// 모든 채팅방 유저 정보 MAP에 해당 객체 추가 [key: Session, value: VO]
-		chatUsers.put(chatUserVO.getSession(), chatUserVO);
-		
-		return chatUserVO;
 	}
 	
 	/**
