@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Schema(description = "채팅 메세지 VO")
 public class ChatMessageVO {
 	
-	@Schema(description = "메세지 타입 - ENTER : 최초 입장, TALK : 메세지 전송")
+	@Schema(description = "메세지 타입 - ENTER : 최초 입장, TALK : 메세지 전송, OUT : 퇴장")
 	private MessageType messageType;
 	
 	@Schema(description = "채팅방 아이디")
@@ -27,7 +27,7 @@ public class ChatMessageVO {
 	
 	// 메세지 타입 : 입장, 채팅
 	public enum MessageType {
-		ENTER, TALK
+		ENTER, TALK, OUT
 	}	
 
 }

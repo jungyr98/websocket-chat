@@ -48,6 +48,22 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	/**
+	 * 유저 세션 아이디로 채팅방 조회
+	 */
+	@Override
+	public ChatRoomVO findRoomByUserSession(WebSocketSession session) {
+		ChatRoomVO vo = null;
+		for(ChatRoomVO roomVO : chatRooms.values()) {			
+			if(roomVO.getSessions() != null) {
+				roomVO.getSessions().contains(session);
+				vo = roomVO;
+				break;
+			}
+		}
+		return vo;
+	}
+	
+	/**
 	 * 채팅방 생성
 	 */
 	@Override

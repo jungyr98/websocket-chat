@@ -22,6 +22,13 @@ public interface ChatService {
 	public ChatRoomVO findRoomById(String roomId);
 	
 	/**
+	 * 유저 세션 아이디로 채팅방 조회
+	 * @param session
+	 * @return
+	 */
+	public ChatRoomVO findRoomByUserSession(WebSocketSession session);
+	
+	/**
 	 * 채팅방 생성
 	 * @param roomName
 	 * @return

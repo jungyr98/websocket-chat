@@ -39,10 +39,13 @@ public class ChatRoomVO {
 	 * @param chatService
 	 */
 	public void handleActions(WebSocketSession session, ChatMessageVO chatMessageVO, ChatService chatService) {
-		// messageType -> ENTER(입장)일 경우 분기 처리
+		// messageType -> ENTER(입장)/OUT(퇴장)일 경우 분기 처리
 		if(chatMessageVO.getMessageType().equals(ChatMessageVO.MessageType.ENTER)) {
 			sessions.add(session);
 			chatMessageVO.setMessage(chatMessageVO.getSenderId() + "님이 입장했습니다.");
+		}else if(chatMessageVO.getMessageType().equals(ChatMessageVO.MessageType.OUT)) {
+			sessions.remove(session);
+			chatMessageVO.setMessage(chatMessageVO.getSenderId() + "님이 퇴장했습니다.");
 		}
 		sendMessage(chatMessageVO, chatService);
 	}
