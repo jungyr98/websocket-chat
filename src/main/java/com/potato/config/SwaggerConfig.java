@@ -19,8 +19,8 @@ public class SwaggerConfig {
 
     private Info apiInfo() {
         return new Info()
-                .title("CodeArena Swagger")
-                .description("CodeArena 유저 및 인증 , ps, 알림에 관한 REST API")
+                .title("Potato Chat Swagger")
+                .description("Potato Chat 채팅방 개설, 메시지 전송에 관한 REST API")
                 .version("1.0.0");
     }
     
