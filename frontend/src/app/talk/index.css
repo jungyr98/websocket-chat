@@ -1,0 +1,54 @@
+.chat-talk-browser-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.chat-talk-main-box {
+  width: auto;
+  max-width: 400px;
+}
+
+.chat-talk-exchange-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.message-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-div-left {
+  align-items: start;
+}
+
+.message-div-right {
+  align-items: end;
+}
+
+.message-box {
+  width: auto;
+  height: auto;
+  padding: 10px;
+  background: beige;
+  border-radius: 20px;
+}
+
+.message-box-left {
+  border-top-left-radius: 0px;
+  margin: 5px 0 0 15px;
+}
+
+.message-box-right {
+  border-top-right-radius: 0px;
+  margin: 5px 15px 0 0;
+}
+
+.ant-table-cell {
+  border: none !important;
+  padding-bottom: 0 !important;
+}
